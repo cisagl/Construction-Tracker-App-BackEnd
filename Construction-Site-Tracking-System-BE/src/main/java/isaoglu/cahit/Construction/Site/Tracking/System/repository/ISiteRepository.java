@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ISiteRepository extends JpaRepository<Site, Long> {
+    Site findById(long id);
 }

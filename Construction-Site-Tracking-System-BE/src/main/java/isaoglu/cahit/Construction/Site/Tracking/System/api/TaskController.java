@@ -18,6 +18,11 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
+    @GetMapping("/site/{siteId}")
+    public List<Task> findBySite(@PathVariable long siteId){
+        return taskService.findBySite(siteId);
+    }
+
     @PostMapping("/save")
     public Task save(@RequestBody Task task){
         return taskService.createTask(task);
