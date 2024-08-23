@@ -1,9 +1,13 @@
 package isaoglu.cahit.Construction.Site.Tracking.System.entitiy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table (name = "task")
@@ -23,10 +27,11 @@ public class Task {
     @Column (name = "task_description")
     private String description;
 
-    @Column (name = "task_image")
-    private String image;
-
     @ManyToOne
     @JoinColumn (name = "task_site_id", referencedColumnName = "site_id", nullable = false)
     private Site site;
+
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Image> images = new ArrayList<>();
 }

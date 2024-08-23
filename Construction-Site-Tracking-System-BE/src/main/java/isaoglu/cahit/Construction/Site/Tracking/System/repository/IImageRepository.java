@@ -1,6 +1,7 @@
 package isaoglu.cahit.Construction.Site.Tracking.System.repository;
 
-import isaoglu.cahit.Construction.Site.Tracking.System.entitiy.Site;
+
+import isaoglu.cahit.Construction.Site.Tracking.System.entitiy.Image;
 import isaoglu.cahit.Construction.Site.Tracking.System.entitiy.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,9 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ITaskRepository extends JpaRepository<Task, Long> {
+public interface IImageRepository extends JpaRepository<Image, Long> {
 
-    Task findById(long id);
+    List<Image> findByTask(Task task);
 
-    List<Task> findBySite(Site site);
 }

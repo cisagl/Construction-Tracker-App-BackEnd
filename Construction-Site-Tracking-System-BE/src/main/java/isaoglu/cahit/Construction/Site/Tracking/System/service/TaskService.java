@@ -14,7 +14,6 @@ public class TaskService {
 
     @Autowired
     private ITaskRepository taskRepository;
-
     @Autowired
     private ISiteRepository siteRepository;
 
@@ -22,13 +21,13 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task createTask(Task task) {
-        return taskRepository.save(task);
-    }
-
     public List<Task> findBySite(long siteId){
         Site site = siteRepository.findById(siteId);
         return taskRepository.findBySite(site);
+    }
+
+    public Task createTask(Task task) {
+        return taskRepository.save(task);
     }
 
     public void deleteTask(Long id) {
