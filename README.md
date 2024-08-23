@@ -6,7 +6,7 @@ This repository contains the backend for the Construction Tracker App, a system 
 
 - **Manage Construction Sites:** Add, update, and delete construction sites.
 - **Task Management:** Assign tasks to specific construction sites, and manage them by adding, updating, or deleting tasks.
-- **Task Images:** Attach images to tasks for better visual representation.
+- **Task Images:** Attach multiple images to tasks for better visual representation and management.
 - **API Integration:** RESTful API endpoints for seamless integration with the frontend.
 
 ## Endpoints Overview
@@ -25,9 +25,16 @@ This repository contains the backend for the Construction Tracker App, a system 
 - **PUT** `/api/tasks/update/{id}` - Update an existing task.
 - **DELETE** `/api/tasks/{id}` - Delete a task by ID.
 
+### Images
+
+- **GET** `/api/images/task/{taskId}` - Retrieve all images associated with a specific task.
+- **POST** `/api/images/save` - Add a new image to a task.
+- **PUT** `/api/images/update/{id}` - Update an existing image's URL.
+- **DELETE** `/api/images/{id}` - Delete an image by ID.
+
 ## Technologies Used
 
 - **Java** - Primary language used for backend development.
 - **Spring Boot** - Framework used to build and deploy the backend.
-- **PostgreSQL** - Database used for storing site and task information.
+- **PostgreSQL** - Database used for storing site, task, and image information.
 - **JPA/Hibernate** - ORM for database interaction.
