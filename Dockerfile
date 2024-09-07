@@ -2,15 +2,19 @@ FROM maven:3.8.4-openjdk-17 AS build
 
 WORKDIR /app
 
-COPY Construction-Tracker-App-BackEnd/pom.xml /app
-COPY Construction-Tracker-App-BackEnd/src /app/src
+# Sadece pom.xml dosyasını kopyalayarak bağımlılıkları indirmek için
+COPY pom.xml /app/pom.xml
+RUN mvn dependency:go-offline -B
 
-RUN mvn clean package -Dmaven.test.skip=true
+# Uygulama kaynak kodlarını kopyalayarak derleme işlemi
+COPY src /app/src
+RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 
 WORKDIR /app
 
+# Hedef dizinindeki .jar dosyasını kopyala
 COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
